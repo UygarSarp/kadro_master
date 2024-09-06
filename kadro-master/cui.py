@@ -22,8 +22,6 @@ while True:
 
             dosya_yaz(kadro)
 
-            print(f"{oyuncu.strip('\n')} kadroya eklendi.")
-
     elif komut.startswith("göster"):
         kadro = dosya_ac()
 
@@ -45,7 +43,6 @@ while True:
 
             dosya_yaz(kadro)
 
-            print(f"{değişen} ile {kadro[numara].strip('\n')} değiştirildi.")
         except ValueError:
             print("Lütfen değiştirmek istediğiniz oyuncunun numarasını 'değiştir'den sonra giriniz.")
             continue
