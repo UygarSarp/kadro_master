@@ -3,7 +3,6 @@ import functions as xd
 import FreeSimpleGUI as sg
 
 sg.theme("Black")
-
 zaman = sg.Text("",key="saat")
 yazi = sg.Text("Kadroya kimi ekleyeceğini yaz.")
 gir = sg.InputText(tooltip="Oyuncu gir", key="oyuncu")
