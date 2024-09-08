@@ -1,7 +1,10 @@
-
+import time
 import functions as xd
 import FreeSimpleGUI as sg
 
+sg.theme("Black")
+
+zaman = sg.Text("",key="saat")
 yazi = sg.Text("Kadroya kimi ekleyeceğini yaz.")
 gir = sg.InputText(tooltip="Oyuncu gir", key="oyuncu")
 buton = sg.Button("Ekle")
@@ -10,15 +13,16 @@ gitgel = sg.Button("Değiştir")
 baybay = sg.Button("Çıkar")
 destroy = sg.Button("Sıfırla")
 run = sg.Button("Çık")
+left_column = [[gitgel], [baybay]]
+sa = sg.Column(left_column)
 
 window = sg.Window("Kadrolama Programı",
-                   layout=[[yazi], [gir, buton], [list_box, gitgel, baybay], [run, destroy]],
+                   layout=[[zaman],[yazi], [gir, buton], [list_box, sa], [run, destroy]],
                    font=('Cuckoo', 20))
 
 while True:
-    olay, isim = window.read()
-    print(olay)
-    print(isim)
+    olay, isim = window.read(timeout=200)
+    window["saat"].update(value=time.strftime("%d %b, %Y %H.%M.%S"))
     match olay:
         case "Ekle":
             kadro = xd.dosya_ac()
@@ -47,7 +51,7 @@ while True:
                 xd.dosya_yaz(kadro)
                 window["kadro"].update(kadro)
             except IndexError:
-                xd.error_pencere("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.")
+                sg.popup("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.", font=("Comic Sans MC",24))
         case "kadro":
             try:
                 window["oyuncu"].update(isim["kadro"][0])
@@ -59,6 +63,6 @@ while True:
 
         case "Çık":
             break
-        case sg.WINDOW_CLOSED:
+        case sg.WIN_CLOSED:
             break
 window.close()
