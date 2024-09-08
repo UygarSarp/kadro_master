@@ -37,11 +37,7 @@ while True:
                 xd.dosya_yaz(kadro)
                 window["kadro"].update(kadro)
             except IndexError:
-                error_yazi = sg.Text("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.")
-                error_buton = sg.Button("Tamam")
-                error = sg.Window("Error", layout=[[error_yazi], [error_buton]])
-                error.read()
-                error.close()
+                xd.error_pencere("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.")
         case "Çıkar":
             try:
                 gidici = isim["kadro"][0]
@@ -51,20 +47,12 @@ while True:
                 xd.dosya_yaz(kadro)
                 window["kadro"].update(kadro)
             except IndexError:
-                error_yazi = sg.Text("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.")
-                error_buton = sg.Button("Tamam")
-                error = sg.Window("Error", layout=[[error_yazi], [error_buton]])
-                error.read()
-                error.close()
+                xd.error_pencere("Lütfen işlem yapacağınız oyuncunun üstüne tıklayın.")
         case "kadro":
             try:
                 window["oyuncu"].update(isim["kadro"][0])
             except IndexError:
-                error_yazi = sg.Text("Bir isim seçebilmek için listenizde en az bir isim olmalıdır!")
-                error_buton = sg.Button("Tamam")
-                error = sg.Window("Error", layout=[[error_yazi], [error_buton]])
-                error.read()
-                error.close()
+                xd.error_pencere("Bir isim seçebilmek için listenizde en az bir isim olmalıdır!")
         case "Sıfırla":
             xd.dosya_yaz("")
             window["kadro"].update("")
