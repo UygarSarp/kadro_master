@@ -22,7 +22,5 @@ for i,oyuncu in enumerate(kadro):
         del st.session_state[oyuncu]
         st.rerun()
 
-st.text_input(label="",placeholder="Oyuncu ismini girin...",
-              on_change=eklemec(),key='abdu')
-
-st.session_state
+st.text_input(label="",placeholder="Oyuncu ismini girin...",key='abdu',on_change=eklemec)
+#Hacı bu eklemec in sonuna parantez koyunca neden error veriyor yav?
