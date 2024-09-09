@@ -22,5 +22,6 @@ def error_pencere(yazi):
     error.close()
 
 
+
 if __name__ == "__main__":
     print("Çet noluyoooo")
